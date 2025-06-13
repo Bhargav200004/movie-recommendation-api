@@ -1,4 +1,5 @@
 import { HttpError } from '@src/errors/HttpsError';
+import ApiResponse from '@src/library/globalApiResponse';
 import Logging from '@src/log/logging';
 import { Request, Response, NextFunction } from 'express';
 
@@ -11,12 +12,10 @@ function globalErrorHandlerMiddleware(
   const status = err.status || 500;
   const message = err.message || 'Something went wrong';
 
-  Logging.error(`[${err.name}]:- Status = ${status} \n ${err.stack}`);
+  const response = new ApiResponse(false , message , {} , status)
 
-  res.status(status).send({
-    status,
-    message,
-  });
+  Logging.error(`[${err.name}]:- Status = ${status} \n ${err.stack}`);
+  res.status(status).json(response);
 }
 
 export default globalErrorHandlerMiddleware;
