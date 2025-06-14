@@ -1,11 +1,12 @@
+import "tsconfig-paths/register";
 import { config } from 'dotenv';
 config();
 
 import express, { Express }  from 'express';
 import { json } from 'body-parser';
 
-import appRouter from '@src/routes/appRoutes';
-import globalErrorHandlerMiddleware from './middleware/globalErrorHandler.middleware';
+import appRouter from '@/routes/appRoutes';
+import globalErrorHandlerMiddleware from "@/middleware/globalErrorHandler.middleware";
 
 const app : Express = express();
 
