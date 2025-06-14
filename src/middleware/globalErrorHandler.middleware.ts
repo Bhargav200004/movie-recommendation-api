@@ -1,7 +1,9 @@
-import { HttpError } from '@src/errors/HttpsError';
-import ApiResponse from '@src/library/globalApiResponse';
-import Logging from '@src/log/logging';
 import { Request, Response, NextFunction } from 'express';
+import { HttpError } from 'http-errors';
+
+import Logging from '@/log/logging';
+import ApiResponse from "@/library/globalApiResponse";
+
 
 function globalErrorHandlerMiddleware(
   err: HttpError,

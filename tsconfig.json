@@ -1,20 +1,27 @@
 {
+  "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
-    "lib": ["es2018", "dom"], // Specify a list of libraries the project will use
-    "target": "es2018", // Set the JavaScript version for output files
-    "module": "commonjs", // Set the module system (Node.js uses CommonJS)
+    "lib": ["es2023"], // Specify a list of libraries the project will use
+    "target": "es2022", // Set the JavaScript version for output files
+    "module": "node16", // Set the module system (Node.js uses CommonJS)
     "strict": true, // Enable all strict type-checking options
     "baseUrl": ".", // Base directory to resolve non-relative module names
     "outDir": "dist", // Redirect output structure to the 'dist' folder
-    "rootDir": ".", // Specify the root directory of source files
+    "rootDir": "src", // Specify the root directory of source files
     "skipLibCheck": true, // Skip type checking of all declaration files (*.d.ts)
     "esModuleInterop": true, // Enables compatibility with default imports from modules
-    "moduleResolution": "node", // Choose a module resolution strategy
+    "moduleResolution": "node16", // Choose a module resolution strategy
     "resolveJsonModule": true,
     "removeComments": true,
+    "sourceMap": true,
 
     "paths": {
-      "@src/*": ["src/*"] // absolute paths
+      "@/src/*": ["src/*"] ,
+      "@/controller/*" : ["src/controller/*"],
+      "@/routes/*" :["src/routes/*"],
+      "@/log/*" : ["src/log/*"],
+      "@/library/*" : ["src/library/*"],
+      "@/middleware/*" : ["src/middleware/*"]
     },
 
     "strictNullChecks": true, // Enable strict null checks
@@ -31,6 +38,11 @@
     "noUnusedParameters": true, // Report errors on unused parameters
     "noImplicitReturns": true, // Report error when not all code paths in function return a value
     "noFallthroughCasesInSwitch": true // Report errors for fallthrough cases in switch statement
+  },
+  "ts-node": {
+    // Configuration for ts-node
+    "transpileOnly": true, // Speeds up development
+    "require": ["tsconfig-paths/register"] // Enable path aliases in ts-node
   },
   "include": [
     "src/**/*" // Include all files in the src directory
