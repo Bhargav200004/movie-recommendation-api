@@ -1,55 +1,45 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
-    "lib": ["es2023"], // Specify a list of libraries the project will use
-    "target": "es2022", // Set the JavaScript version for output files
-    "module": "node16", // Set the module system (Node.js uses CommonJS)
-    "strict": true, // Enable all strict type-checking options
-    "baseUrl": ".", // Base directory to resolve non-relative module names
-    "outDir": "dist", // Redirect output structure to the 'dist' folder
-    "rootDir": "src", // Specify the root directory of source files
-    "skipLibCheck": true, // Skip type checking of all declaration files (*.d.ts)
-    "esModuleInterop": true, // Enables compatibility with default imports from modules
-    "moduleResolution": "node16", // Choose a module resolution strategy
+    "lib": ["es2023"],
+    "target": "es2022",
+    "module": "node16",
+    "strict": true,
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node16",
     "resolveJsonModule": true,
     "removeComments": true,
     "sourceMap": true,
-
     "paths": {
-      "@/src/*": ["src/*"] ,
-      "@/controller/*" : ["src/controller/*"],
-      "@/routes/*" :["src/routes/*"],
-      "@/log/*" : ["src/log/*"],
-      "@/library/*" : ["src/library/*"],
-      "@/middleware/*" : ["src/middleware/*"]
+      "@/*": ["src/*"]
     },
-
-    "strictNullChecks": true, // Enable strict null checks
-    "strictFunctionTypes": true, // Enable strict checking of function types
-    "strictPropertyInitialization": true, // Ensure non-undefined class properties are initialized in the constructor
-    "strictBindCallApply": true, // Enable stricter checking of the bind, call, and apply methods on functions
-    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file
-
-    "noImplicitAny": true, // Raise error on expressions and declarations with an implied 'any' type
-    "noImplicitThis": true, // Raise error on 'this' expressions with an implied 'any' type
-    "alwaysStrict": true, // Parse in strict mode and emit "use strict" for each source file
-
-    "noUnusedLocals": true, // Report errors on unused locals
-    "noUnusedParameters": true, // Report errors on unused parameters
-    "noImplicitReturns": true, // Report error when not all code paths in function return a value
-    "noFallthroughCasesInSwitch": true // Report errors for fallthrough cases in switch statement
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "strictBindCallApply": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   },
   "ts-node": {
-    // Configuration for ts-node
-    "transpileOnly": true, // Speeds up development
-    "require": ["tsconfig-paths/register"] // Enable path aliases in ts-node
+    "transpileOnly": true,
+    "require": ["module-alias/register"]
   },
   "include": [
-    "src/**/*" // Include all files in the src directory
+    "src/**/*"
   ],
   "exclude": [
-    "node_modules", // Exclude the node_modules directory
-    "**/*.spec.ts",
-    "**/*.test.ts" // Exclude test files
+    "node_modules",
+    "dist"
   ]
 }
