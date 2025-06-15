@@ -1,4 +1,4 @@
-import ApiResponse from '@/src/library/globalApiResponse';
+import ApiResponse from '@/library/globalApiResponse';
 import { Router, Request, Response } from 'express';
 
 
